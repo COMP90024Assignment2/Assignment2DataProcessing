@@ -1,6 +1,7 @@
 import requests
-from mastodon import Mastodon, MastodonNotFoundError, MastodonRatelimitError, StreamListener
+from mastodon import Mastodon, StreamListener
 import csv, os, time, json
+import couchdb
 
 def delete_mastodon_status(status_id, access_token):
     url = "https://mastodon.social/@jionghao/api/v1/statuses/{}".format(status_id)
@@ -53,13 +54,40 @@ def full_text_search(access_token):
     else:
         print("Error get the request text. HTTP status code: {}".format(response.status_code))
         print(response.text)
-        
-def streaming_Mastodon_timeline():
-    pass
+
+def connect_tocouchdb(username, password, ip, port, dbname):
+    # Connect to CouchDB server
+    couch_db = couchdb.Server(f'http://{username}:{password}@{ip}:{port}')
+    # Create a new database
+    try:
+        required_couch_db = couch_db.get(dbname)
+    except couchdb.http.ResourceNotFound:
+        couch_db.create(dbname)
+    return required_couch_db
+
+class Listener(StreamListener):
+    # called when receiving new post or status update
+    def on_update(self, status):
+        json_str = json.dumps(status, indent=2, sort_keys=True, default=str)
+        doc_id, doc_rev = db.save(json.loads(json_str))
+        print(f'Document saved with ID: {doc_id} and revision: {doc_rev}')
+       
+
+
 if __name__ == "__main__":
-    access_token = "MVXpwFYU7so-i0x6kyltoq-Y7jZW8bm2Nv8yOIklQrc"  
+    access_token = "jnWDZ37TnO26LteKfnFhNIWseXnl44N5ljD14CF__sk"  
     status_id = "110197044539110917"
 
 
-    stream_federated_timeline_given_hashtag(access_token)
+    #stream_federated_timeline_given_hashtag(access_token)
     #full_text_search(access_token)
+    
+    m = Mastodon(
+        # your server here
+        api_base_url=f'https://theblower.au',
+        access_token=access_token
+    )
+
+
+    # make it better with try-catch and error-handling
+    m.stream_public(Listener())
