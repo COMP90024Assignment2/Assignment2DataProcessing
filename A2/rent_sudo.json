@@ -1,0 +1,66 @@
+[
+    {
+        "GCC": "1GSYD",
+        "rent": "470"
+    },
+    {
+        "GCC": "1RNSW",
+        "rent": "330"
+    },
+    {
+        "GCC": "2GMEL",
+        "rent": "390"
+    },
+    {
+        "GCC": "2RVIC",
+        "rent": "285"
+    },
+    {
+        "GCC": "3GBRI",
+        "rent": "380"
+    },
+    {
+        "GCC": "3RQLD",
+        "rent": "345"
+    },
+    {
+        "GCC": "4GADE",
+        "rent": "320"
+    },
+    {
+        "GCC": "4RSAU",
+        "rent": "220"
+    },
+    {
+        "GCC": "5GPER",
+        "rent": "350"
+    },
+    {
+        "GCC": "5RWAU",
+        "rent": "265"
+    },
+    {
+        "GCC": "6GHOB",
+        "rent": "350"
+    },
+    {
+        "GCC": "6RTAS",
+        "rent": "250"
+    },
+    {
+        "GCC": "7GDAR",
+        "rent": "385"
+    },
+    {
+        "GCC": "7RNTE",
+        "rent": "150"
+    },
+    {
+        "GCC": "8ACTE",
+        "rent": "450"
+    },
+    {
+        "GCC": "9OTER",
+        "rent": "200"
+    }
+]
