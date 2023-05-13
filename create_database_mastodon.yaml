@@ -1,0 +1,19 @@
+- name: create database mastodon
+  hosts: dbservers
+  become: yes
+  gather_facts: no
+  vars:
+    couchdb_host: "http://172.26.134.63:5984/"
+    couchdb_username: "jionghao"
+    couchdb_password: "123456"
+    new_db_name: "test_ansible"
+  tasks:
+  - name: Create new CouchDB database in server
+    uri:
+      url: "{{ couchdb_host }}{{ new_db_name }}"
+      method: PUT
+      headers:
+        Authorization: "Basic {{ (couchdb_username + ':' + couchdb_password) | b64encode }}"
+      status_code: 201
+  
+ 
