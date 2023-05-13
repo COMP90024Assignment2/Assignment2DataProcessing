@@ -5,7 +5,7 @@ from couchdb import Server
 
 # Provide the CouchDB server's URL, username, and password
 couchdb_url = 'http://jionghao:123456@172.26.134.63:5984/'
-json_files_directory = sys.argv[1]
+json_files_directory = './'
 
 server = Server(couchdb_url)
 
