@@ -109,7 +109,7 @@ df_combined_new = df_combined.sort_values('created_at')
 
 # Replace NaN values with 0
 df_new = df_combined_new.fillna(0)
-df_new.to_csv('mastodon data.csv', index=False)
+df_new.to_csv('combined_time_data.csv', index=False)
 import json, csv
 
 def csv_to_json(csv_file_path):
@@ -125,8 +125,8 @@ def write_json_file(json_file_path, data):
         json.dump(data, json_file, ensure_ascii=False, indent=4)
         
 if __name__ == '__main__':
-    csv_file_path = 'mastodon data.csv'
-    json_file_path = 'mastodon data.json'
+    csv_file_path = 'combined_time_data.csv'
+    json_file_path = 'combined_time_data.json'
 
     data = csv_to_json(csv_file_path)
     write_json_file(json_file_path, data)
