@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
 
 # In[29]:
@@ -9,6 +9,7 @@ import requests
 from mastodon import Mastodon, StreamListener
 import csv, os, time, json
 from couchdb import Server
+import couchdb
 import re
 #from datetime import datetime
 from datetime import date, datetime
@@ -58,7 +59,7 @@ class KeywordStreamListener(StreamListener):
             homeless_status = status.copy()
             homeless_status['_id'] = 'homeless_' + str(homeless_status['id'])
             self.homeless_db.save(homeless_status)
-            #print('One homeless add')
+            print('One homeless add')
         if any(keyword.lower() in content.lower() for keyword in self.income_keywords):
             income_status = status.copy()
             income_status['_id'] = 'income_' + str(income_status['id'])
@@ -128,13 +129,7 @@ stream_to_couchdb(instance_url, access_token,
                  )
 
 
-# In[ ]:
 
-
-
-
-
-# In[ ]:
 
 
 
