@@ -12,7 +12,7 @@ server = Server(couchdb_url)
 # Read JSON files and push them to CouchDB
 for file in os.listdir(json_files_directory):
     if file.endswith('.json') and file.startswith('combined'):
-        db_name=(file[9:-5])
+        db_name=('mastodon_'+file[9:-5])
         if db_name not in server:
             db = server.create(db_name)
         else:

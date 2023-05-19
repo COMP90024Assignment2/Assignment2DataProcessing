@@ -97,25 +97,25 @@ homeless_keywords = ["homeless", "tramp", "vagrant",'dispossessed', 'unhoused']
 rent_keywords = ["rent", "chummage", "rental",'lease', 'renting', 'leasing', 'tenants']
 income_keywords = ["income", "earning",'payroll', 'paycheque', 'paycheck']
 
-mortgage_db_name = 'mortgage'
+mortgage_db_name = 'mastodon_mortgage_data'
 if mortgage_db_name not in couch:
     mortgage_db = couch.create(mortgage_db_name)
 else:
     mortgage_db = couch[mortgage_db_name]
 
-homeless_db_name = 'homeless'
+homeless_db_name = 'mastodon_homeless_data'
 if homeless_db_name not in couch:
     homeless_db = couch.create(homeless_db_name)
 else:
     homeless_db = couch[homeless_db_name]
     
-rent_db_name = 'rent'
+rent_db_name = 'mastodon_rent_data'
 if rent_db_name not in couch:
     rent_db = couch.create(rent_db_name)
 else:
     rent_db = couch[rent_db_name]
     
-income_db_name = 'income'
+income_db_name = 'mastodon_income_data'
 if income_db_name not in couch:
     income_db = couch.create(income_db_name)
 else:
