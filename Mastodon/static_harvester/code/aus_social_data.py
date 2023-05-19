@@ -35,6 +35,10 @@ if __name__ == "__main__":
     file_names=["aussocial_mortgage_data.json","aussocial_homeless_data.json",
                 "aussocial_rent_data.json","aussocial_income_data.json" ]
 
+    folder='./json_file'
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
     for i in range(4):
         keywords=kw_dicts[i]
         output_file='./json_file/'+file_names[i]
