@@ -5,6 +5,7 @@ bad_json = []
 import json
 import re
 
+
 def find_keyword(keywords: list, input_string: str) -> dict:
     result = {}
     for keyword, keywordlist in keywords.items():
@@ -33,7 +34,7 @@ def extract_usefull(input_string: str):
 
 def process_twitter_data(input_file: str, output_file: str):
     keywords = {"homeless": ["homeless", "tramp", "vagrant"], "income": ["income", "earning", "salary", "wage"], "rental": ["rent", "chummage", "rental"], "mortgage":["mortgage", "pledge", "hypothec", "guaranty", "pawn"]}
-    
+
     with open(input_file, "r", encoding="utf-8") as f:
         with open(output_file, "w", encoding="utf-8") as output_f:
             output_f.write("[\n")
@@ -44,11 +45,12 @@ def process_twitter_data(input_file: str, output_file: str):
             while True:
                 try:
                     current_line = f.readline()
+
                     
                     if current_line == "]\n":
                         break
                     elif current_line == "  },\n" or current_line == "  }\n":
-                        
+
                         result_dict = find_keyword(keywords, current_twitter_json.lower())
                         if result_dict != {}:
                             author_id, full_name, twitter_id = extract_usefull(current_twitter_json)
@@ -64,7 +66,9 @@ def process_twitter_data(input_file: str, output_file: str):
                                     output_f.write(",\n")
                                 else:
                                     first_output = False
+
                                 json.dump(merged_dict, output_f)
+
                         current_twitter_json = ""
                     else:
                         current_twitter_json += current_line
